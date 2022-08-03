@@ -6,6 +6,8 @@
  * https://github.com/oculus-samples/Unity-FirstHand/tree/main/Assets/Project/LICENSE.txt
  */
 
+// #define USE_MATERIAL_PROPERTY_BLOCK
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,36 +22,62 @@ namespace Oculus.Interaction.ComprehensiveSample
      * Definition already supports materials, just need to add material management */
     public class MaterialProperty : MonoBehaviour
     {
+#if USE_MATERIAL_PROPERTY_BLOCK        
         private static MaterialPropertyBlock _propertyBlock;
-
+#endif
+        
         [SerializeField]
         private Definition _definition;
 
         [SerializeField]
         private List<Renderer> _renderers;
 
+#if !USE_MATERIAL_PROPERTY_BLOCK        
+        private List<Material> _materials;
+#endif
+        
         protected virtual void Awake()
         {
+#if USE_MATERIAL_PROPERTY_BLOCK            
             _propertyBlock ??= new MaterialPropertyBlock();
+#else
+            _materials = new List<Material>();
+
+            for (int i = 0; i < _renderers.Count; i++)
+            {
+                _materials.Add(_renderers[i].material);
+            }
+#endif
         }
 
         protected virtual void LateUpdate()
         {
+#if USE_MATERIAL_PROPERTY_BLOCK
             for (int i = 0; i < _renderers.Count; i++)
             {
                 _renderers[i].GetPropertyBlock(_propertyBlock);
                 _definition.ApplyTo(_propertyBlock);
                 _renderers[i].SetPropertyBlock(_propertyBlock);
             }
+#else
+            for (int i = 0; i < _materials.Count; i++)
+            {
+                _definition.ApplyTo(_materials[i]);
+            }
+#endif
         }
 
         protected virtual void OnDisable()
         {
+#if USE_MATERIAL_PROPERTY_BLOCK
             _propertyBlock.Clear();
             for (int i = 0; i < _renderers.Count; i++)
             {
                 _renderers[i].SetPropertyBlock(_propertyBlock);
             }
+#else
+            // TODO: restore material to original settings?
+#endif
         }
 
         /// <summary>
@@ -82,6 +110,7 @@ namespace Oculus.Interaction.ComprehensiveSample
 
             private int _propertyID;
 
+#if USE_MATERIAL_PROPERTY_BLOCK            
             public void ApplyTo(MaterialPropertyBlock target)
             {
                 switch (_type)
@@ -102,7 +131,7 @@ namespace Oculus.Interaction.ComprehensiveSample
                         throw new Exception($"Can't handle material property type {_type}");
                 }
             }
-
+#else
             public void ApplyTo(Material target)
             {
                 switch (_type)
@@ -123,6 +152,7 @@ namespace Oculus.Interaction.ComprehensiveSample
                         throw new Exception($"Can't handle material property type {_type}");
                 }
             }
+#endif
 
             void ISerializationCallbackReceiver.OnAfterDeserialize() => _propertyID = Shader.PropertyToID(_property);
             void ISerializationCallbackReceiver.OnBeforeSerialize() { }

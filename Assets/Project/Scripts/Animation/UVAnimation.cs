@@ -6,7 +6,8 @@
  * https://github.com/oculus-samples/Unity-FirstHand/tree/main/Assets/Project/LICENSE.txt
  */
 
-using System;
+// #define USE_MATERIAL_PROPERTY_BLOCK
+
 using System.Collections;
 using UnityEngine;
 
@@ -17,9 +18,11 @@ namespace Oculus.Interaction.ComprehensiveSample
     /// </summary>
     public class UVAnimation : MonoBehaviour
     {
+#if USE_MATERIAL_PROPERTY_BLOCK        
         static MaterialPropertyBlock _mpb;
         static MaterialPropertyBlock PropertyBlock => _mpb ??= new MaterialPropertyBlock();
-
+#endif
+        
         [SerializeField] string _uvPropertyName = "_BaseMap_ST";
 
         [Header("Flipbook")]
@@ -29,10 +32,18 @@ namespace Oculus.Interaction.ComprehensiveSample
         [Header("Scroll")]
         [SerializeField] Vector2 _scroll = new Vector2(0, 0);
 
+#if !USE_MATERIAL_PROPERTY_BLOCK
+        private Material _material;
+#endif
+        
         private void OnEnable()
         {
             var renderer = GetComponent<Renderer>();
             var property = Shader.PropertyToID(_uvPropertyName);
+
+#if !USE_MATERIAL_PROPERTY_BLOCK            
+            _material = renderer.material;
+#endif
 
             int totalCells = _cellCount.x * _cellCount.y;
             if (totalCells > 1)
@@ -75,11 +86,15 @@ namespace Oculus.Interaction.ComprehensiveSample
             }
         }
 
-        private static void SetTileOffset(Renderer renderer, int property, Vector4 uv)
+        private void SetTileOffset(Renderer renderer, int property, Vector4 uv)
         {
+#if USE_MATERIAL_PROPERTY_BLOCK            
             renderer.GetPropertyBlock(PropertyBlock);
             PropertyBlock.SetVector(property, uv);
             renderer.SetPropertyBlock(PropertyBlock);
+#else            
+            _material.SetVector(property, uv);
+#endif
         }
     }
 }
