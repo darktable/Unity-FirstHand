@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2518c50cb3fc6a6458d4b743c2f69c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   _useInitialPressPositionForDrag: 1
 --- !u!114 &636938800
 MonoBehaviour:

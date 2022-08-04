@@ -858,6 +858,58 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4901302987478223809, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302987478223809, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302987478223809, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302987478223809, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.81568635
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302987478223809, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302987478223809, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.6627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302989787927643, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302989787927643, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302989787927643, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302989787927643, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.81568635
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302989787927643, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901302989787927643, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.6627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919022601411988887, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: useRecommendedMSAALevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4919022601422791763, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.777
@@ -885,6 +937,30 @@ PrefabInstance:
     - target: {fileID: 4919022601422791763, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919022601423383439, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919022601423383439, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919022601423383439, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919022601423383439, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.81568635
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919022601423383439, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919022601423383439, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.6627451
       objectReference: {fileID: 0}
     - target: {fileID: 5263511655743172531, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: _updateAfter
@@ -1069,7 +1145,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
